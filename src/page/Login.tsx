@@ -24,8 +24,16 @@ const Login: React.FC = () => {
 
       const data = res.data;
 
+      if (!data.token) {
+        console.error("No token received");
+        return;
+      }
+
       // Save the token in cookie
       document.cookie = `token=${data.token}`;
+
+      // Reload the page
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
