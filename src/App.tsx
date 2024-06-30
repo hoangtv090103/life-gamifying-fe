@@ -1,78 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import axios from "axios";
+import Login from "./page/Login";
 
 function App() {
   const [token, setToken] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  const login = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.post("/api/auth/login", {
-        username,
-        password,
-      });
-      const data = res.data;
+  useEffect(() => {
+    setToken(
+      document.cookie.replace(
+        /(?:(?:^|.*;\s*)token\s*\\=\s*([^;]*).*$)|^.*$/,
+        "$1"
+      )
+    );
+  }, []); // Empty dependency array ensures the effect runs only once
 
-      setToken(data.token);
-    } catch (error) {
-      console.error(error);
-    }
-    setLoading(false);
-  };
-
-  console.log(username, password, token);
+  console.log(token);
+  console.log(document.cookie.includes("token"));
 
   return (
     <>
       <div className="App">
-        <header className="App-header">
-          <p>
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </p>
-          <p>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </p>
-          <p>
-            <button onClick={login} disabled={loading}>
-              Login
-            </button>
-          </p>
-          <p>{token}</p>
-          <p>
-            <button
-              onClick={async () => {
-                try {
-                  const response = await axios.get("/api/v1/habits", {
-                    headers: {
-                      Authorization: `${token}`,
-                    },
-                  });
-                  const data = response.data;
+        {document.cookie.includes("token") ? (
+          <div>
+            <h2>Logged in</h2>
+            <p>Token: {token}</p>
 
-                  console.log(data);
-                } catch (error) {
-                  console.error(error);
-                }
+            <button
+              onClick={() => {
+                document.cookie =
+                  "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                setToken("");
               }}
             >
-              Get Habits
+              Logout
             </button>
-          </p>
-        </header>
+          </div>
+        ) : (
+          <Login />
+        )}
       </div>
     </>
   );
