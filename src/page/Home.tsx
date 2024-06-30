@@ -1,8 +1,8 @@
 import React from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div
@@ -31,7 +31,7 @@ const navigate = useNavigate()
             className="px-4 py-2 bg-green-500 rounded-md hover:bg-green-600 font-bold"
             onClick={() => {
               console.log("Redirecting to /login");
-              navigate("/login")
+              navigate("/login");
             }}
           >
             Get Started

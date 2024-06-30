@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ const Login: React.FC = () => {
       document.cookie = `token=${data.token}`;
 
       // redirect to the home page with React Router
-      return redirect("/");
+      return navigate("/main");
     } catch (error) {
       console.error(error);
     }
