@@ -30,8 +30,7 @@ const Home: React.FC = () => {
           <button
             className="px-4 py-2 bg-green-500 rounded-md hover:bg-green-600 font-bold"
             onClick={() => {
-              console.log("Redirecting to /login");
-              navigate("/login");
+              navigate("/register");
             }}
           >
             Get Started
