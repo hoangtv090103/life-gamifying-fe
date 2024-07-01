@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import Habit from "../components/Habit";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Sidebar from "../components/Sidebar";
+import BottomMenu from "../components/BottomMenu";
 
 const Main: React.FC = () => {
   const [player, setPlayer] = useState({
@@ -34,10 +36,9 @@ const Main: React.FC = () => {
           },
         }
       );
-      console.log("Setting player in local storage")
+      console.log("Setting player in local storage");
       localStorage.setItem("player", JSON.stringify(res.data));
       setPlayer(res.data);
-
     } catch (error) {
       console.error(error);
     }
@@ -50,6 +51,8 @@ const Main: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header player={player} />
+      <Sidebar />
+      <BottomMenu />
 
       <Habit />
 
