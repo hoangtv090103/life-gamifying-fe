@@ -20,6 +20,11 @@ const Main: React.FC = () => {
   );
 
   const fetchPlayer = async () => {
+    if (localStorage.getItem("player")) {
+      setPlayer(JSON.parse(localStorage.getItem("player")!));
+      console.log("Player already in local storage");
+      return;
+    }
     try {
       const res = await axios.get(
         `/api/v1/players/${localStorage.getItem("player_id")}`,
@@ -29,8 +34,10 @@ const Main: React.FC = () => {
           },
         }
       );
-
+      console.log("Setting player in local storage")
+      localStorage.setItem("player", JSON.stringify(res.data));
       setPlayer(res.data);
+
     } catch (error) {
       console.error(error);
     }

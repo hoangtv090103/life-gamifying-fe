@@ -22,8 +22,8 @@ const Header: React.FC<HeaderProps> = ({ player }) => {
           alt="avatar"
         />
         <div className="ml-4">
-          <h1 className="text-xl font-bold">{player.user.username}</h1>
-          <p className="text-sm">{player.level}</p>
+          <h1 className="text-xl font-rpg">{player.user.username}</h1>
+          <p className="text-sm">Level {player.level}</p>
         </div>
       </div>
       <div className="flex items-center space-x-4">
@@ -35,10 +35,16 @@ const Header: React.FC<HeaderProps> = ({ player }) => {
           <div className="text-yellow-500">{player.exp} / 100</div>
           <div className="text-xs">Experience</div>
         </div>
-        <div className="text-center">
-          <div className="text-blue-500">Unlocks at level 10</div>
+        {/* <div className="text-center">
+          <div className="text-blue-500">
+            {player.level < 10 ? (
+              <div>Unlocks at level 10</div>
+            ) : (
+              <div>Mana {player}</div>
+            )}
+          </div>
           <div className="text-xs">Mana</div>
-        </div>
+        </div> */}
       </div>
     </header>
   );
