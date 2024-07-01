@@ -79,8 +79,8 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
 
   return (
     <>
-      <div className="flex items-center justify-between p-4 mb-2 bg-white shadow-md rounded-md md:min-w-[50%] hover:shadow-lg hover:cursor-pointer">
-        <p className="ml-4" onClick={openModal}>
+      <div className="flex items-center justify-between p-4 mb-2 bg-white shadow-md rounded-md hover:shadow-lg hover:cursor-pointer w-full lg:w-2/3">
+        <p className="md:ml-4" onClick={openModal}>
           {habit.name}
         </p>
         <div className="flex items-center">
