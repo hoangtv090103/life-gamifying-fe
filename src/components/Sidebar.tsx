@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaArrowLeft, FaArrowRight, FaBars } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +46,7 @@ const Sidebar: React.FC = () => {
       </div>
       <button
         onClick={toggleSidebar}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 bg-gray-800 text-white rounded-r focus:outline-none z-10 hidden lg:block"
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 bg-gray-800 text-white rounded-r-2xl focus:outline-none z-10 hidden lg:block"
       >
         {isOpen ? (
           <FaArrowLeft className="text-2xl" />
