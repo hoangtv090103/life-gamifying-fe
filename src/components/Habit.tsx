@@ -30,11 +30,14 @@ const Habit: React.FC = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/v1/habits", {
-          headers: {
-            Authorization: token,
-          },
-        });
+        const response = await axios.get(
+          `/api/v1/players/${localStorage.getItem("player_id")}/habits`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
 
         if (response.status == 401) {
           navigate("/login");
