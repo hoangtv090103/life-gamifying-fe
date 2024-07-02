@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
+  // TODO: Fix cannot login in multiple devices
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

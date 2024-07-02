@@ -10,7 +10,7 @@ export default defineConfig({
     proxy: {
       // Proxy all requests starting with /api to the backend server
       "/api": {
-        target: "http://localhost:8080", // Backend server
+        target: "http://localhost:9080", // Backend server
         changeOrigin: true, // Recommended if you have CORS issues
       },
     },

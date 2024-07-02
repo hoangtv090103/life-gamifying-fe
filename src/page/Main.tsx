@@ -24,7 +24,6 @@ const Main: React.FC = () => {
   const fetchPlayer = async () => {
     if (localStorage.getItem("player")) {
       setPlayer(JSON.parse(localStorage.getItem("player")!));
-      console.log("Player already in local storage");
       return;
     }
     try {
@@ -49,7 +48,7 @@ const Main: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen w-full lg:w-1/2 lg:mx-auto ">
       <Header player={player} />
       <Sidebar />
       <BottomMenu />

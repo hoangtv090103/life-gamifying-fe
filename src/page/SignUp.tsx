@@ -40,7 +40,7 @@ const SignUp: React.FC = () => {
           Turn your life into a game and level up by completing your daily tasks
           and habits!
         </p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="mb-4">
             <label htmlFor="login" className="block text-gray-700 mb-2">
               Username
@@ -84,8 +84,9 @@ const SignUp: React.FC = () => {
             type="submit"
             className="w-full py-2 bg-green-500 text-white font-bold rounded-md hover:bg-green-600"
           >
-            Login
+            Sign Up
           </button>
+          <a href="/login" className="text-center text-gray-600 mb-6">Already have an account? Login</a>
         </form>
       </div>
     </div>

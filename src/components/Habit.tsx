@@ -2,8 +2,12 @@ import axios from "axios";
 import React from "react";
 import HabitCard from "./HabitCard";
 import { useNavigate } from "react-router-dom";
+import { FaPlus, FaSpinner } from "react-icons/fa";
+import HabitModal from "../modals/HabitModal";
 
 const Habit: React.FC = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
   const [habits, setHabits] = React.useState<
     {
       id: number;
@@ -37,6 +41,7 @@ const Habit: React.FC = () => {
         }
 
         setHabits(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching habits:", error);
       }
@@ -45,10 +50,33 @@ const Habit: React.FC = () => {
     fetchData();
   }, []);
 
+  const handleOpenModal = () => {
+    console.log("Opening modal");
+    setIsOpen(true);
+  };
+
+  const [habit, setHabit] = React.useState({
+    id: 0,
+    name: "",
+    description: "",
+    difficulty: "",
+    frequency: "",
+    success: 0,
+    failure: 0,
+  });
+
   return (
-    <main className="flex-grow p-4">
-      {/* Check if there are habits */}
-      {habits.length === 0 ? (
+    <main className="flex flex-col flex-grow p-4 justify-center items-center">
+      {/* Add habit button */}
+      <button
+        onClick={handleOpenModal}
+        className="bg-blue-500 text-white px-4 py-2 rounded-full mb-4"
+      >
+        <FaPlus className="inline-block" />
+      </button>
+      {isLoading ? (
+        <FaSpinner className="animate-spin h-6 w-6 mx-auto" />
+      ) : habits.length === 0 ? (
         <p className="text-center">Let's create some habits!</p>
       ) : (
         <div className="flex flex-col gap-4 justify-center items-center">
@@ -58,6 +86,11 @@ const Habit: React.FC = () => {
           ))}
         </div>
       )}
+      <HabitModal
+        habit={habit}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      />{" "}
     </main>
   );
 };
