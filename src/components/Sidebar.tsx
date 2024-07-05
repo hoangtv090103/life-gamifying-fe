@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import LogoutButton from "./buttons/LogoutButton";
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +41,9 @@ const Sidebar: React.FC = () => {
             </li>
             <li className="p-4 hover:bg-gray-700">
               <a href="#settings">Settings</a>
+            </li>
+            <li className="p-4 hover:bg-gray-700">
+              <LogoutButton />
             </li>
           </ul>
         </nav>

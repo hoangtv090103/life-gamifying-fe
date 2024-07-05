@@ -61,10 +61,7 @@ const HabitModal: React.FC<HabitModalProps> = ({
       },
       {
         headers: {
-          Authorization: document.cookie.replace(
-            /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-            "$1"
-          ),
+          Authorization: localStorage.getItem("token")
         },
       }
     );

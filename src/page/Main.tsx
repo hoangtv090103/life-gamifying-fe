@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import BottomMenu from "../components/BottomMenu";
+import LogoutButton from "../components/buttons/LogoutButton";
 
 const Main: React.FC = () => {
   const [player, setPlayer] = useState({
@@ -16,10 +17,7 @@ const Main: React.FC = () => {
       username: "",
     },
   });
-  const token = document.cookie.replace(
-    /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-    "$1"
-  );
+  const token = localStorage.getItem("token");
 
   const fetchPlayer = async () => {
     if (localStorage.getItem("player")) {

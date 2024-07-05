@@ -38,10 +38,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
         },
         {
           headers: {
-            Authorization: document.cookie.replace(
-              /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-              "$1"
-            ),
+            Authorization: localStorage.getItem("token")
           },
         }
       );
@@ -60,10 +57,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
         },
         {
           headers: {
-            Authorization: document.cookie.replace(
-              /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-              "$1"
-            ),
+            Authorization: localStorage.getItem("token")
           },
         }
       );
@@ -82,10 +76,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
     try {
       await axios.delete(`api/v1/habits/${habit.id}`, {
         headers: {
-          Authorization: document.cookie.replace(
-            /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-            "$1"
-          ),
+          Authorization: localStorage.getItem("token")
         },
       });
       // Handle successful removal here

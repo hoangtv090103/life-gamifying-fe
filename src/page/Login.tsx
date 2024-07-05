@@ -24,11 +24,14 @@ const Login: React.FC = () => {
         return;
       }
 
+      // Store token data in local storage
+      localStorage.setItem("token", data.token);
+
       // Store Player_id data in local storage
       localStorage.setItem("player_id", data.player_id);
 
       // Save the token in cookie
-      document.cookie = `token=${data.token}`;
+      // document.cookie = `token=${data.token}`;
 
       // redirect to the home page with React Router
       return navigate("/main");

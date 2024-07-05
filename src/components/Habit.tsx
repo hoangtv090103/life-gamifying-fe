@@ -20,10 +20,7 @@ const Habit: React.FC = () => {
     }[]
   >([]);
 
-  const token = document.cookie.replace(
-    /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-    "$1"
-  );
+  const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
 
