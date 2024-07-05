@@ -15,6 +15,8 @@ const LogoutButton = () => {
     localStorage.removeItem("token");
     // Remove the player_id from the local storage
     localStorage.removeItem("player_id");
+    // Remove the player from the local storage
+    localStorage.removeItem("player");
 
     // Redirect to the login page
     return navigate("/login");
