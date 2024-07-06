@@ -73,7 +73,8 @@ const HabitModal: React.FC<HabitModalProps> = ({
       },
       {
         headers: {
-          Authorization: token
+          Authorization: token,
+          player_id: localStorage.getItem("player_id"),
         },
       }
     );

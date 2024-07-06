@@ -28,7 +28,7 @@ const Main: React.FC = () => {
         `/api/v1/players/${localStorage.getItem("player_id")}`,
         {
           headers: {
-            Authorization: `${token}`,
+            Authorization: token,
           },
         }
       );

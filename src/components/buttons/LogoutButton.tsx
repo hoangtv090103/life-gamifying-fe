@@ -8,6 +8,7 @@ const LogoutButton = () => {
     await axios.delete("/api/auth/logout", {
       headers: {
         Authorization: localStorage.getItem("token"),
+        player_id: localStorage.getItem("player_id"),
       },
     });
 

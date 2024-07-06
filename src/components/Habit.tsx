@@ -30,6 +30,7 @@ const Habit: React.FC = () => {
           {
             headers: {
               Authorization: localStorage.getItem("token"),
+              player_id: localStorage.getItem("player_id"),
             },
           }
         );
