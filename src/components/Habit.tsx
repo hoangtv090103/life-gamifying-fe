@@ -13,8 +13,8 @@ const Habit: React.FC = () => {
       id: number;
       name: string;
       description: string;
-      difficulty: string; // Assuming Difficulty is a string
-      frequency: string; // Assuming Frequency is a string
+      difficulty: number; // Assuming Difficulty is a string
+      frequency: number; // Assuming Frequency is a string
       success: number;
       failure: number;
     }[]
@@ -57,8 +57,8 @@ const Habit: React.FC = () => {
     id: 0,
     name: "",
     description: "",
-    difficulty: "",
-    frequency: "",
+    difficulty: 0,
+    frequency: 0,
     success: 0,
     failure: 0,
   });
@@ -86,6 +86,7 @@ const Habit: React.FC = () => {
       )}
       <HabitModal
         habit={habit}
+        setHabit={setHabit}
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
       />{" "}

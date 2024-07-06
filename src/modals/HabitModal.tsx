@@ -15,12 +15,14 @@ interface Habit {
 
 interface HabitModalProps {
   habit: Habit | null;
+  setHabit: React.Dispatch<React.SetStateAction<Habit>> | null;
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
 const HabitModal: React.FC<HabitModalProps> = ({
   habit,
+  setHabit,
   isOpen,
   onRequestClose,
 }) => {
@@ -33,14 +35,18 @@ const HabitModal: React.FC<HabitModalProps> = ({
   const token = localStorage.getItem("token");
 
   const handleSave = async () => {
-    const updatedHabit = {
-      name: name,
-      description: description,
-      difficulty: difficulty,
-      frequency: frequency,
-      success: success,
-      failure: failure,
-    };
+    if (setHabit) {
+      setHabit({
+        id: habit?.id || 0,
+        name: name,
+        description: description,
+        difficulty: difficulty,
+        frequency: frequency,
+        success: success,
+        failure: failure,
+      });
+    }
+
 
     // if (habit?.id !== 0 && habit?.id !== undefined) {
     //   // Update habit
@@ -57,7 +63,12 @@ const HabitModal: React.FC<HabitModalProps> = ({
     await axios.post(
       `api/v1/habits`,
       {
-        ...updatedHabit,
+        name: name,
+        description: description,
+        difficulty: difficulty,
+        frequency: frequency,
+        success: success,
+        failure: failure,
         player_id: parseInt(localStorage.getItem("player_id")!),
       },
       {

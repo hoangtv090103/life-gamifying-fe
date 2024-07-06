@@ -142,6 +142,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
 
       <HabitModal
         habit={habit}
+        setHabit={null}
         isOpen={isOpen}
         onRequestClose={onRequestClose}
       />
