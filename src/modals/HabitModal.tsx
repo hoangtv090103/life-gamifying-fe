@@ -30,6 +30,7 @@ const HabitModal: React.FC<HabitModalProps> = ({
   const [frequency, setFrequency] = React.useState(0);
   const [success, setSuccess] = React.useState(0);
   const [failure, setFailure] = React.useState(0);
+  const token = localStorage.getItem("token");
 
   const handleSave = async () => {
     const updatedHabit = {
@@ -61,7 +62,7 @@ const HabitModal: React.FC<HabitModalProps> = ({
       },
       {
         headers: {
-          Authorization: localStorage.getItem("token")
+          Authorization: token
         },
       }
     );

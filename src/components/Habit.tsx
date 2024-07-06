@@ -20,8 +20,6 @@ const Habit: React.FC = () => {
     }[]
   >([]);
 
-  const token = localStorage.getItem("token");
-
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -31,7 +29,7 @@ const Habit: React.FC = () => {
           `/api/v1/players/${localStorage.getItem("player_id")}/habits`,
           {
             headers: {
-              Authorization: token,
+              Authorization: localStorage.getItem("token"),
             },
           }
         );

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import BottomMenu from "../components/BottomMenu";
-import LogoutButton from "../components/buttons/LogoutButton";
 
 const Main: React.FC = () => {
   const [player, setPlayer] = useState({

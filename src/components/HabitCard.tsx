@@ -28,6 +28,8 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
     setIsOpen(true);
   };
 
+  const token = localStorage.getItem("token");
+
   const handleSuccess = async () => {
     setSuccess(success + 1);
     try {
@@ -38,7 +40,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
         },
         {
           headers: {
-            Authorization: localStorage.getItem("token")
+            Authorization: token,
           },
         }
       );
@@ -57,7 +59,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
         },
         {
           headers: {
-            Authorization: localStorage.getItem("token")
+            Authorization: token,
           },
         }
       );
@@ -76,7 +78,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
     try {
       await axios.delete(`api/v1/habits/${habit.id}`, {
         headers: {
-          Authorization: localStorage.getItem("token")
+          Authorization: token,
         },
       });
       // Handle successful removal here
